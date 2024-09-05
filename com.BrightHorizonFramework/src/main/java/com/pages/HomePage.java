@@ -15,11 +15,11 @@ import org.testng.Assert;
 import com.utilities.DriverUtils;
 import com.utilities.ExcelUtils;
 
-public class LoginPage  {
+public class HomePage  {
 
 	WebDriver driver=null;
 	
-	public LoginPage(WebDriver driver) {
+	public HomePage(WebDriver driver) {
 		this.driver= driver;
 		PageFactory.initElements(driver, this);
 	}

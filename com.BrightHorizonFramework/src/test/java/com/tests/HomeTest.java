@@ -13,18 +13,18 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.base.BaseClass;
-import com.pages.LoginPage;
+import com.pages.HomePage;
 import com.utilities.DriverUtils;
 
-public class LoginTest extends BaseClass{
+public class HomeTest extends BaseClass{
 
-	LoginPage lp=null;
+	HomePage lp=null;
 
 	@BeforeSuite
 	public void setup()throws Exception {
 		initialization();
 		reportInit();
-		lp= new LoginPage(driver);
+		lp= new HomePage(driver);
 	}
 	
 	

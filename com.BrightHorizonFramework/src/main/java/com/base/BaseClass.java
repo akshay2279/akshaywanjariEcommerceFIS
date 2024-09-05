@@ -49,7 +49,9 @@ public class BaseClass {
 			System.setProperty("webdriver.gecko.driver", "D:/geckodriver.exe");
 			driver= new FirefoxDriver();
 		}
-		// Initialize ChromeOptions
+		
+	
+// Initialize ChromeOptions
         ChromeOptions options = new ChromeOptions();
 
         // Disable notifications
@@ -59,8 +61,10 @@ public class BaseClass {
         options.addArguments("--disable-popup-blocking");
 		driver.manage().window().maximize();
 		driver.get(PropertyUtils.readProperty("url"));
-		
+
 	}
+   // driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
 	
 	public void waitforElementToAppear(By findby)
 	{
@@ -76,13 +80,9 @@ public class BaseClass {
 	
 	public void screenshotUtils() throws IOException
 	{
-		 // Taking a screenshot
+
         File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-
-        // Define the destination file path
         File destinationFile = new File("path/to/save/screenshot.png");
-
-        // Copy the screenshot to the destination file
         Files.copy(screenshot.toPath(), destinationFile.toPath());
 
         System.out.println("Screenshot saved to: " + destinationFile.getAbsolutePath());
