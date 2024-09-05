@@ -46,6 +46,17 @@ public class HomePage  {
 	@FindBy(xpath="//input[@id= 'signInSubmit']")
 	WebElement signInBtn;
 	
+	@FindBy(xpath="//nav[@class='nav-shared txt-nav-hierarchy nav-top js-nav-shared js-nav-top']//li[@class='nav-item displayed-mobile']//a[@class='btn-nav btn btn-large btn-hollow color-nileblue global_header_findcenter track_cta_click'][normalize-space()='Find a Center']")
+	WebElement findCenterBtn;
+	
+	
+	@FindBy(xpath="//input[@id='addressInput']")
+	WebElement searchText;
+	
+	
+	
+	
+	
 	
 	
 	public void validLogin01() throws Exception
@@ -75,6 +86,9 @@ public class HomePage  {
 		search.click();;
 		searchField.sendKeys("Employee Education in 2018");
 		searchBtn.click();
+		findCenterBtn.click();
+		searchText.sendKeys("NewYork");
+		searchText.click();
 		
 		// Get the actual text from the element
         String actualText = firstresultverification.getText();
