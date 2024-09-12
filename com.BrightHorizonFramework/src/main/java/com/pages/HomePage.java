@@ -86,7 +86,10 @@ public class HomePage  {
 		search.click();;
 		searchField.sendKeys("Employee Education in 2018");
 		searchBtn.click();
-		findCenterBtn.click();
+		
+		new WebDriverWait(driver, 20).until(ExpectedConditions.elementToBeClickable(By.xpath("//nav[@class='nav-shared txt-nav-hierarchy nav-top js-nav-shared js-nav-top']//li[@class='nav-item displayed-desktop']//a[@class='btn-nav btn btn-large btn-hollow color-nileblue global_header_findcenter track_cta_click'][normalize-space()='Find a Center']"))).click();
+
+	//	findCenterBtn.click();
 		searchText.sendKeys("NewYork");
 		searchText.click();
 		
