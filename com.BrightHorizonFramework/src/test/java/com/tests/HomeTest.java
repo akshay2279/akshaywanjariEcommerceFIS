@@ -13,25 +13,30 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.base.BaseClass;
+import com.pages.ContactUsPage;
 import com.pages.HomePage;
 import com.utilities.DriverUtils;
 
 public class HomeTest extends BaseClass{
 
 	HomePage lp=null;
-
+ContactUsPage cp = null;
 	@BeforeSuite
 	public void setup()throws Exception {
 		initialization();
 		reportInit();
 		lp= new HomePage(driver);
+		cp= new ContactUsPage(driver);
+
 	}
 	
 	
 	@Test(groups = { "sanity","regression"})
 	public void homescreen() throws Exception {
-		lp.validLogin01();
-		Assert.assertEquals(driver.getTitle(), "EdAssist by Bright Horizons | Bright Horizons®");
-	    lp.search();
+		lp.HomePage();
+		Assert.assertEquals(driver.getTitle(), "Tendable");
+		
+		cp.contatUsScreen();
+	 
 	}	
 }

@@ -25,83 +25,62 @@ public class HomePage  {
 	}
 	
 	
-	@FindBy(xpath="//button[contains(text(),'Accept All')]")
-	WebElement acceptAllBtn;
+	@FindBy(xpath="//a[@aria-label='home']//img[@class='navbar7_logo']")
+	WebElement tendableTitle;
 	
-	@FindBy(xpath="//a[@class='button track_cta_click home_lazy_edassist']")
-	WebElement learnBtn;
+	@FindBy(xpath="//a[@class='navbar7_link w-nav-link'][normalize-space()='About']")
+	WebElement aboutBtn;
 	
-	@FindBy(xpath="//a[@class='nav-link-search track_nav_interact']//span[@class='icon-search bhc-icon-search-rounded']")
-	WebElement search;
+	@FindBy(xpath="//a[@class='navbar7_link w-nav-link'][normalize-space()='Products']")
+	WebElement product;
 	
-	@FindBy(xpath="//nav[@id='subnav-search-desktop-top']//input[@id='search-field']")
-	WebElement searchField;
+	@FindBy(xpath="//a[@class='navbar7_link w-nav-link'][normalize-space()='Sectors']")
+	WebElement sector;
 	
-	@FindBy(xpath="//nav[@id='subnav-search-desktop-top']//button[@type='submit'][normalize-space()='Search']")
-	WebElement searchBtn;
+	@FindBy(xpath="//a[@class='navbar7_link w-nav-link'][normalize-space()='Content Hub']")
+	WebElement contentHub;
 	
-	@FindBy(xpath="//h3[text()='Employee Education in 2018: Strategies to Watch']")
-	WebElement firstresultverification;
+	@FindBy(xpath="//a[@class='navbar7_link w-nav-link'][normalize-space()='Contact']")
+	WebElement contact;
 	
-	@FindBy(xpath="//input[@id= 'signInSubmit']")
-	WebElement signInBtn;
+	@FindBy(xpath="//a[@class='button is-small w-button']")
+	WebElement bookADemoHome;
 	
-	@FindBy(xpath="//nav[@class='nav-shared txt-nav-hierarchy nav-top js-nav-shared js-nav-top']//li[@class='nav-item displayed-mobile']//a[@class='btn-nav btn btn-large btn-hollow color-nileblue global_header_findcenter track_cta_click'][normalize-space()='Find a Center']")
-	WebElement findCenterBtn;
-	
-	
-	@FindBy(xpath="//input[@id='addressInput']")
-	WebElement searchText;
+	@FindBy(xpath="//a[@class='button is-small w-button']")
+	WebElement bookADemoFromAbout;
 	
 	
+	@FindBy(xpath="//a[@class='button is-small w-button']")
+	WebElement bookADemoProduct;
+	
+	@FindBy(xpath="//a[@class='button is-small w-button']")
+	WebElement bookADemoviaSector;
+	
+	@FindBy(xpath="//a[@class='button is-small w-button']")
+	WebElement bookADemoviaContentHub;
+	
+	@FindBy(xpath="//a[@class='button is-small w-button']")
+	WebElement bookADemoviaContact;
 	
 	
 	
-	
-	
-	public void validLogin01() throws Exception
+	public ContactUsPage HomePage() throws Exception
 	{
-		acceptAllBtn.click();
+		tendableTitle.isDisplayed();
+		aboutBtn.isDisplayed();
+		product.isDisplayed();
+		sector.isDisplayed();
+		contentHub.isDisplayed();
+		contact.isDisplayed();
+		bookADemoHome.isEnabled();
+		bookADemoFromAbout.isDisplayed();
+		bookADemoProduct.isEnabled();
+		bookADemoviaSector.isEnabled();
+		bookADemoviaContentHub.isEnabled();
+		bookADemoviaContact.isEnabled();
 		
-		JavascriptExecutor js = (JavascriptExecutor) driver;
+		return new ContactUsPage(driver);
 		
-		
-		js.executeScript("window.scrollBy(0,2150)", "");
-		DriverUtils.waitForElement(learnBtn, 10);
-		learnBtn.click();
-		        String textToCheck = "edassist";
-
-        // Get the current URL
-        String currentURL = driver.getCurrentUrl();
-
-        // Check if the URL contains the specified text
-        if (currentURL.contains(textToCheck)) {
-            System.out.println("The URL contains the text: " + textToCheck);
-        } else {
-            System.out.println("The URL does not contain the text: " + textToCheck);
-        }
-		}
-	
-	public void search() {
-		search.click();;
-		searchField.sendKeys("Employee Education in 2018");
-		searchBtn.click();
-		
-		new WebDriverWait(driver, 20).until(ExpectedConditions.elementToBeClickable(By.xpath("//nav[@class='nav-shared txt-nav-hierarchy nav-top js-nav-shared js-nav-top']//li[@class='nav-item displayed-desktop']//a[@class='btn-nav btn btn-large btn-hollow color-nileblue global_header_findcenter track_cta_click'][normalize-space()='Find a Center']"))).click();
-
-	//	findCenterBtn.click();
-		searchText.sendKeys("NewYork");
-		searchText.click();
-		
-		// Get the actual text from the element
-        String actualText = firstresultverification.getText();
-
-        // The expected text
-        String expectedText = "Employee Education in 2018: Strategies to Watch";
-
-        // Assert that the actual text matches the expected text
-        Assert.assertEquals(actualText, expectedText, "Text does not match!");
-		
-	}		
 	}
+}
 

@@ -42,7 +42,7 @@ public class BaseClass {
 		String browserName= PropertyUtils.readProperty("browser");
 		
 		if(browserName.equalsIgnoreCase("Chrome")) {
-			System.setProperty("webdriver.chrome.driver", "C:\\Users\\Lenovo\\Downloads\\chromedriver-win64 (3)\\chromedriver-win64\\chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver", "D:/chromedriver.exe");
 			driver= new ChromeDriver();
 		}
 		if(browserName.equalsIgnoreCase("Firefox")) {
