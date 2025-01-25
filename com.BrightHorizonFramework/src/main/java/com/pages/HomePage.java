@@ -1,5 +1,6 @@
 package com.pages;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -25,61 +26,74 @@ public class HomePage  {
 	}
 	
 	
-	@FindBy(xpath="//a[@aria-label='home']//img[@class='navbar7_logo']")
-	WebElement tendableTitle;
+	@FindBy(xpath="//input[@id='gh-ac']")
+	WebElement searchField;
 	
-	@FindBy(xpath="//a[@class='navbar7_link w-nav-link'][normalize-space()='About']")
-	WebElement aboutBtn;
+	@FindBy(xpath="//span[normalize-space()='Fiction & Nonfiction Books']")
+	WebElement clickonItem;
 	
-	@FindBy(xpath="//a[@class='navbar7_link w-nav-link'][normalize-space()='Products']")
-	WebElement product;
+//    WebDriverWait wait = new WebDriverWait(driver, 10);
+//    List<WebElement> suggestions = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(
+//        By.cssSelector(".autocomplete-suggestion")
+//    ));
+
+//    // Print all suggestions
+//    System.out.println("Search suggestions:");
+//    for (WebElement suggestion : suggestions) {
+//        System.out.println(suggestion.getText());
+//    }
+
+    // Select the desired suggestion (e.g., the first one)
+   // suggestions.get(0).click();
+
+	@FindBy(xpath="//ul[@id='ui-id-1']/li")
+	List<WebElement> searchList;
 	
-	@FindBy(xpath="//a[@class='navbar7_link w-nav-link'][normalize-space()='Sectors']")
-	WebElement sector;
+	@FindBy(xpath="//ul[@class='srp-results srp-list clearfix']/li")
+	List<WebElement> bookSelection;
 	
-	@FindBy(xpath="//a[@class='navbar7_link w-nav-link'][normalize-space()='Content Hub']")
-	WebElement contentHub;
-	
-	@FindBy(xpath="//a[@class='navbar7_link w-nav-link'][normalize-space()='Contact']")
-	WebElement contact;
-	
-	@FindBy(xpath="//a[@class='button is-small w-button']")
-	WebElement bookADemoHome;
-	
-	@FindBy(xpath="//a[@class='button is-small w-button']")
-	WebElement bookADemoFromAbout;
-	
-	
-	@FindBy(xpath="//a[@class='button is-small w-button']")
-	WebElement bookADemoProduct;
-	
-	@FindBy(xpath="//a[@class='button is-small w-button']")
-	WebElement bookADemoviaSector;
-	
-	@FindBy(xpath="//a[@class='button is-small w-button']")
-	WebElement bookADemoviaContentHub;
-	
-	@FindBy(xpath="//a[@class='button is-small w-button']")
-	WebElement bookADemoviaContact;
+	@FindBy(xpath="//span[contains(text(),'Add to cart')]")
+	WebElement addToCartBtn;
 	
 	
 	
-	public ContactUsPage HomePage() throws Exception
+	
+	
+	public CartPage HomePage() throws Exception
 	{
-		tendableTitle.isDisplayed();
-		aboutBtn.isDisplayed();
-		product.isDisplayed();
-		sector.isDisplayed();
-		contentHub.isDisplayed();
-		contact.isDisplayed();
-		bookADemoHome.isEnabled();
-		bookADemoFromAbout.isDisplayed();
-		bookADemoProduct.isEnabled();
-		bookADemoviaSector.isEnabled();
-		bookADemoviaContentHub.isEnabled();
-		bookADemoviaContact.isEnabled();
+		searchField.isDisplayed();
+		searchField.sendKeys("book");
+		Thread.sleep(1000);
+		for( int i =0; i< searchList.size();i++) {
+			  System.out.println(searchList.get(i).getText().contains("books used - Fiction & Nonfiction books"));
+			  {
+				  searchList.get(i).click();
+				  break;
+			  }
 		
-		return new ContactUsPage(driver);
+			}
+	
+		Thread.sleep(1000);
+		for( int i =0; i< bookSelection.size();i++) {
+			//  System.out.println(bookSelection.get(i).getText().contains("The Lost Book of Herbal & Natural Remedies II - A5 Size"));
+			  System.out.println(bookSelection.get(i).getText());
+
+			
+			{
+				  bookSelection.get(1).click();
+				  break;
+			  }
+		
+			}
+		//bookSelection.click();
+		
+		Thread.sleep(1000);
+
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0, 500)");
+		addToCartBtn.click();
+//			
+		return new CartPage(driver);
 		
 	}
 }

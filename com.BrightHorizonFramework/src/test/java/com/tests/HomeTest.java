@@ -13,20 +13,20 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import com.base.BaseClass;
-import com.pages.ContactUsPage;
+import com.pages.CartPage;
 import com.pages.HomePage;
 import com.utilities.DriverUtils;
 
 public class HomeTest extends BaseClass{
 
 	HomePage lp=null;
-ContactUsPage cp = null;
+CartPage cp = null;
 	@BeforeSuite
 	public void setup()throws Exception {
 		initialization();
 		reportInit();
 		lp= new HomePage(driver);
-		cp= new ContactUsPage(driver);
+		cp= new CartPage(driver);
 
 	}
 	
@@ -34,9 +34,9 @@ ContactUsPage cp = null;
 	@Test(groups = { "sanity","regression"})
 	public void homescreen() throws Exception {
 		lp.HomePage();
-		Assert.assertEquals(driver.getTitle(), "Tendable");
+		//Assert.assertEquals(driver.getTitle(), "Tendable");
 		
-		cp.contatUsScreen();
+		//cp.contatUsScreen();
 	 
 	}	
 }
