@@ -31,20 +31,6 @@ public class HomePage  {
 	
 	@FindBy(xpath="//span[normalize-space()='Fiction & Nonfiction Books']")
 	WebElement clickonItem;
-	
-//    WebDriverWait wait = new WebDriverWait(driver, 10);
-//    List<WebElement> suggestions = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(
-//        By.cssSelector(".autocomplete-suggestion")
-//    ));
-
-//    // Print all suggestions
-//    System.out.println("Search suggestions:");
-//    for (WebElement suggestion : suggestions) {
-//        System.out.println(suggestion.getText());
-//    }
-
-    // Select the desired suggestion (e.g., the first one)
-   // suggestions.get(0).click();
 
 	@FindBy(xpath="//ul[@id='ui-id-1']/li")
 	List<WebElement> searchList;
@@ -54,9 +40,6 @@ public class HomePage  {
 	
 	@FindBy(xpath="//span[contains(text(),'Add to cart')]")
 	WebElement addToCartBtn;
-	
-	
-	
 	
 	
 	public CartPage HomePage() throws Exception
