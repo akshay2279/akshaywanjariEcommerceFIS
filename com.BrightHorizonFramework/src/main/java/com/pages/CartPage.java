@@ -16,11 +16,11 @@ import org.testng.Assert;
 import com.utilities.DriverUtils;
 import com.utilities.ExcelUtils;
 
-public class ContactUsPage  {
+public class CartPage  {
 
 	WebDriver driver=null;
 	
-	public ContactUsPage(WebDriver driver) {
+	public CartPage(WebDriver driver) {
 		this.driver= driver;
 		PageFactory.initElements(driver, this);
 	}
